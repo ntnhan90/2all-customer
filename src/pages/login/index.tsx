@@ -3,7 +3,7 @@
 import Layout from '@layouts/layout'
 
 
-const LoginPage1 = () =>{ 
+const LoginPage = () =>{ 
     //setStep
     return (
         <Layout>
@@ -12,4 +12,4 @@ const LoginPage1 = () =>{
     )
 }
 
-export default LoginPage1
+export default LoginPage
