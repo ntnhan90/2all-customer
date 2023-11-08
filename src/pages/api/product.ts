@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 // fake data
-import products from '@utils/fake_data/products';
+import products from '@utils/fake_data/menu-items';
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   	console.log(req);

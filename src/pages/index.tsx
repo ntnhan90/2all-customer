@@ -1,4 +1,4 @@
-import Layout from '@layout/layout'
+import Layout from '@layouts/layout'
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from "next/link";
