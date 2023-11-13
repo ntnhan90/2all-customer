@@ -1,17 +1,12 @@
 {
-  "module_1": {
-    "title": "Welcome back!",
-    "description": "Here's a list of your tasks for this month!",
-    "login": "Login",
-    "SignUp": "SignUp",
-    "label": {
-      "task": "Task",
-      "title": "Title",
-      "status": "Status",
-      "priority": "Priority",
-      "action": "Action"
-    }
-  },
+  "description": "Here's a list of your tasks for this month!",
+  "SignUp": "SignUp",
+  "SignIn": "SignIn",
+  "task": "Task",
+  "title": "Title",
+  "status": "Status",
+  "priority": "Priority",
+  "action": "Action",
   "All Users": "All Users",
   "Users": "Users 12",
   "word": "Word EN",

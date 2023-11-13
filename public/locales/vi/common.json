@@ -1,23 +1,18 @@
 {
-  "module_1": {
-    "title": "Chào mừng trở lại!",
-    "description": "Danh sách công việc trong tháng này!",
-    "login": "Đăng nhập",
-    "SignUp": "Đăng kí",
-    "label": {
-      "task": "Công việc",
-      "title": "Tiêu đề",
-      "status": "Trạng thái",
-      "priority": "Độ ưu tiên",
-      "action": "Hành động"
-    }
-  },
+  "description": "Danh sách công việc trong tháng này!",
+  "SignIn": "Đăng nhập",
+  "SignUp": "Đăng kí",
+  "task": "Công việc",
+  "title": "Tiêu đề",
+  "status": "Trạng thái",
+  "priority": "Độ ưu tiên",
+  "action": "Hành động",
   "All Users": "Tất cả người dùng",
   "Users": "Người dùng 12",
   "word": "Word VN",
   "BACK_TO_WELCOME_PAGE": "Volver a la página de bienvenida",
   "DESCRIPTION": "Gestión de la traducción para proyectos de software",
-  "GO_TO_ABOUT_US": "Ir a sobre nosotros",
+  "GO_TO_ABOUT_US": "chuyen sang trang lien he",
   "LEARN_MORE": "Más información",
   "OPEN_GITHUB_REPOSITORY": "Repositorio abierto de GitHub",
   "USE_BUTTONS_BELOW": "Utilice los botones de abajo para cambiar de idioma"

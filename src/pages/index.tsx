@@ -18,11 +18,10 @@ export default function Home() {
         window.location.replace("/" + language)
     }
     return (
-        <div className="App">
+        <Layout >
             <div>
-                <p>{t("USE_BUTTONS_BELOW")}</p>
-
-                <p>{homeT("HELLO_WORLD")}                                                </p>
+                <p>{t("title")}</p>
+                <p>{homeT("HELLO_WORLD")} </p>
                 <div>
                     <button onClick={() => changeLanguage("en")}>English</button>
                     <button onClick={() => changeLanguage("vi")}>VN</button>
@@ -37,8 +36,6 @@ export default function Home() {
             <p>
               {t("DESCRIPTION")}
             </p>
-
-
-        </div>
+        </Layout>
     )
 }

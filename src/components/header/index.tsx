@@ -33,38 +33,52 @@ const Header = ({ isErrorPage }: HeaderType) => {
     }, []);
 
     return(
+        <nav className="navbar navbar-expand-lg">
+            <div className="container-fluid">
+                <Link className="navbar-brand" href="/">Navbar</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li className="nav-item">
+                      <Link  className="nav-link active" aria-current="page" href="/#">Home</Link>
+                    </li>
+                    
+                    </ul>
+                </div>
+            </div>
+            {/*
         <section className={`full-width-header-navigation  ${!onTop ? 'site-header--fixed' : ''}`}>
             <header className={`header d-flex align-items-center justify-content-center flex-column h-100 `}>
                 <div className="d-flex justify-content-between align-items-center container">
                     <div className="d-flex align-items-center gap-4">
-                        <Link href="http://localhost:3001/">
-                            <a>
+                        <Link href="http://localhost:4001/">
                             <img className="fictional-company-logo"
                                 alt="fictional-company-logo"
                                 src="/images/logo1.svg"
                                 />
-                                </a>
                         </Link>
 
                         <div className="navigation d-flex gap-4 align-items-center">
                                 <div className="navigation-button">
-                                    <Link href="http://localhost:3001/#order-section1">
-                                        <a className="text fw-bolder">Đặt hàng</a>
+                                    <Link href="http://localhost:4001/#order-section1" className="text fw-bolder">
+                                       Đặt hàng 
                                     </Link>
                                 </div>
                                 <div className="navigation-button">
-                                    <Link href="http://localhost:3001/#contact-section">   
-                                        <a className="text fw-bolder">Dành cho Đối tác</a>
+                                    <Link href="http://localhost:4001/#contact-section" className="text fw-bolder">   
+                                        Dành cho Đối tác
                                     </Link>
                                 </div>
                                 <div className="navigation-button">
-                                    <Link href="http://localhost:3001/#send-message-button">
-                                        <a className="text fw-bolder">Tải App</a>
+                                    <Link href="http://localhost:4001/#send-message-button" className="text fw-bolder">
+                                        Tải App
                                     </Link>
                                 </div>
                                 <div className="navigation-button">
-                                    <Link href="http://localhost:3001/#footer-section">
-                                        <a className="text fw-bolder">Liên hệ</a>
+                                    <Link href="http://localhost:4001/#footer-section" className="text fw-bolder">
+                                        Liên hệ
                                     </Link>
                                 </div>
                         </div>
@@ -74,40 +88,35 @@ const Header = ({ isErrorPage }: HeaderType) => {
                        
                         {!pageLogin &&
                             <div className="navigation-actions d-flex align-items-center">
-                                <Link href="/login">
-                                    <a className="login-button">
+                                <Link href="/login" className="login-button">
                                         <span className="font-weight-600">Đăng nhập</span>
-                                    </a>
                                 </Link>
                             </div>
                         }   
                         {!pageLogin &&
                             <div className="nav-item-button d-flex">
-                            <Link href="#footer-section">
-                                <a className="text fw-bolder">
+                            <Link href="#footer-section" className="text fw-bolder">
                                     <img className="small-icon"
                                         alt="small-icon"
                                         src="/images/shoppingbag03.svg"
                                     />
-                                </a>
                             </Link>
                             </div>
                         }
                         <div className="language-button d-flex align-items-center gap-1">
                             <div className="language-text">VIE</div>
-                            <Link href="#footer-section">
-                                <a className="text fw-bolder">
+                            <Link href="#footer-section" className="text fw-bolder">
                                     <img className="small-icon"
                                         alt=""
                                         src="/images/vn.svg"
                                     />
-                                </a>
                             </Link>
                         </div>
                     </div>
                 </div>
             </header>
-        </section>
+        </section>*/}
+        </nav>
     )
 };
 
