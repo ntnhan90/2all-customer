@@ -1,19 +1,10 @@
 {
-  "description": "Danh sách công việc trong tháng này!",
-  "SignIn": "Đăng nhập",
-  "SignUp": "Đăng kí",
-  "task": "Công việc",
-  "title": "Tiêu đề",
-  "status": "Trạng thái",
-  "priority": "Độ ưu tiên",
-  "action": "Hành động",
-  "All Users": "Tất cả người dùng",
-  "Users": "Người dùng 12",
-  "word": "Word VN",
-  "BACK_TO_WELCOME_PAGE": "Volver a la página de bienvenida",
-  "DESCRIPTION": "Gestión de la traducción para proyectos de software",
+  "DESCRIPTION": "mo ta",
   "GO_TO_ABOUT_US": "chuyen sang trang lien he",
-  "LEARN_MORE": "Más información",
-  "OPEN_GITHUB_REPOSITORY": "Repositorio abierto de GitHub",
-  "USE_BUTTONS_BELOW": "Utilice los botones de abajo para cambiar de idioma"
+  "Order": "Đặt hàng",
+  "Partners" : "Dành cho đối tác",
+  "Dowload_app": "Tải app",
+  "Contact":"Liên hệ",
+  "footer_description" : "Một bữa ăn ngon lành, đầy đủ dưỡng chất, được chế biến theo khẩu vị của bạn. Không cần lo nghĩ, không cần nấu, hẹn giờ giao linh hoạt.",
+  "Log_in" : "Đăng nhập"
 }

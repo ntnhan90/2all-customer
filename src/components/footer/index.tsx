@@ -4,18 +4,15 @@ const Footer = () => {
     <section className="footer-2all d-flex justify-content-center" id="footer-section">
         <div className="footer container">
             <div className="py-5 gap-5 d-flex">
-                <div className="logo-and-supporting-text">
-                    <img className=""
-                         alt=""
-                         src="/images/fictional-company-logo1.svg"
-                    />
-                    <div className="supporting-text-1">
+                <div className="logo-and-supporting-text logo_footer d-flex">
+                    <img className=""  alt=""   src="/images/footer.svg"   />
+                    <p>
                         Một bữa ăn ngon lành, đầy đủ dưỡng chất, được chế biến theo
                         khẩu vị của bạn. Không cần lo nghĩ, không cần nấu, hẹn giờ
                         giao linh hoạt.
-                    </div>
+                    </p>
                 </div>
-                <div className="links d-flex">
+                <div className="footer-links d-flex">
                     <div className="footer-links-column">
                         <div className="footer-links-heading">Liên hệ</div>
                         <div className="footer-links">
@@ -70,7 +67,7 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="footer-links-column2">
+                    <div className="footer-links-column">
                         <div className="footer-links-heading">Theo dõi tại</div>
                         <div className="footer-links">
                             <div className="footer-link">
@@ -107,7 +104,7 @@ const Footer = () => {
                                 <div className="social-button">
                                     <img className="social-image"
                                          alt=""
-                                         src="/images/246x0w-1@2x.png"
+                                         src="/images/zalo.png"
                                     />
                                     <div className="">Zalo</div>
                                 </div>

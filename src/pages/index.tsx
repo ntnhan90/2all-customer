@@ -2,6 +2,8 @@ import Layout from '@layouts/layout'
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from "next/link";
+import Footer from '@components/footer';
+import Banner from '@components/landingPage/banner';
 
 export const getStaticProps = async ({ locale }:any) => ({
     props: {
@@ -19,23 +21,9 @@ export default function Home() {
     }
     return (
         <Layout >
-            <div>
-                <p>{t("title")}</p>
-                <p>{homeT("HELLO_WORLD")} </p>
-                <div>
-                    <button onClick={() => changeLanguage("en")}>English</button>
-                    <button onClick={() => changeLanguage("vi")}>VN</button>
-                </div>
-           
-                <hr/>
-                <Link href="/about">
-                    {t("GO_TO_ABOUT_US")}
-                </Link>
-            </div>
+            <Banner />
 
-            <p>
-              {t("DESCRIPTION")}
-            </p>
+            <Footer />
         </Layout>
     )
 }

@@ -1,19 +1,10 @@
 {
-  "description": "Here's a list of your tasks for this month!",
-  "SignUp": "SignUp",
-  "SignIn": "SignIn",
-  "task": "Task",
-  "title": "Title",
-  "status": "Status",
-  "priority": "Priority",
-  "action": "Action",
-  "All Users": "All Users",
-  "Users": "Users 12",
-  "word": "Word EN",
-  "BACK_TO_WELCOME_PAGE": "Back to welcome page",
   "DESCRIPTION": "Translation Management for software projects",
   "GO_TO_ABOUT_US": "Go to about us",
-  "LEARN_MORE": "Learn more",
-  "OPEN_GITHUB_REPOSITORY": "Open GitHub Repository",
-  "USE_BUTTONS_BELOW": "Use buttons below to switch between languages"
+  "Order": "Order",
+  "Partners" : "Partners",
+  "Dowload_app": " download app",
+  "Contact":"contact",
+  "footer_description" : "A delicious, nutritious meal, prepared to your taste. No need to worry, no need to cook, flexible delivery schedule",
+  "Log_in" : "Log in"
 }
