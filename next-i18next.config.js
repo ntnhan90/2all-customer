@@ -5,4 +5,5 @@ module.exports = {
         localeDetection: false,
     },
     trailingSlash: true,
+    reloadOnPrerender: true
 };

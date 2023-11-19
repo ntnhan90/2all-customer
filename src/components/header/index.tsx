@@ -7,6 +7,7 @@ type HeaderType = {
 }
 
 const Header = ({ isErrorPage }: HeaderType) => {
+    
     const router = useRouter();
     const arrayPaths = ['/']; 
     const [onTop, setOnTop] = useState(( !arrayPaths.includes("/router.pathname")|| isErrorPage ) ? false : true);
@@ -20,7 +21,6 @@ const Header = ({ isErrorPage }: HeaderType) => {
         }
     }
 
-
     useEffect(() => {
         if(!arrayPaths.includes(router.pathname) || isErrorPage) {
             return;
@@ -31,6 +31,7 @@ const Header = ({ isErrorPage }: HeaderType) => {
           headerClass();
         };
     }, []);
+
 
     return(
         <section className={`full-width-header-navigation  ${!onTop ? 'site-header--fixed' : ''}`}>
@@ -47,7 +48,7 @@ const Header = ({ isErrorPage }: HeaderType) => {
                         <div className="navigation d-flex gap-4 align-items-center">
                                 <div className="navigation-button">
                                     <Link href="http://localhost:3001/#order-section1" className="text fw-bolder">
-                                        Đặt hàng
+                                        Đặt hàng 
                                     </Link>
                                 </div>
                                 <div className="navigation-button">

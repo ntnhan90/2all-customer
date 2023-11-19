@@ -7,7 +7,7 @@ export const products = [
     merchart: "The Chef Town",
     currentPrice: 80000,
     images: [
-      "/images/6387ec276a4eb-62aa10dfb2adca268416cf2fd03d82f5transformed-3@2x.png",
+      "/images/menu-item1.png",
     ],
     kcal: 366,
     carb: 16,
@@ -62,7 +62,7 @@ export const products = [
     currentPrice: 80000,
     merchart: "An Garden",
     images: [
-      "/images/6387ec276a4eb-62aa10dfb2adca268416cf2fd03d82f5transformed-3@2x.png",
+      "/images/menu-item1.png",
     ],
 
     kcal: 550,
@@ -109,7 +109,7 @@ export const products = [
     currentPrice: 90000,
     merchart: "The Chef Town",
     images: [
-      "/images/6387ec276a4eb-62aa10dfb2adca268416cf2fd03d82f5transformed-3@2x.png",
+      "/images/menu-item1.png",
     ],
     kcal: 600,
     carb: 0,

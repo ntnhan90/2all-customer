@@ -14,7 +14,6 @@ import '@assets/css/global.css';
 import '@assets/css/style.css';
 
 
-
 const MyApp = ({ Component, pageProps }: AppProps) => {
     return(
       <Fragment>
