@@ -1,22 +1,19 @@
-
-
 import Layout from '@layouts/layout'
-import Footer from '@components/footer';
-import LoginComponent   from '@components/loginSteps/LoginComponent';
-import PhoneVerificationComponent   from '@components/loginSteps/PhoneVerificationComponent';
-import Additional   from '@components/loginSteps/Additional';
-import RegistrationSuccess   from '@components/loginSteps/RegistrationSuccess';
+import Footer from "@components/footer"
+import LoginComponent from "@components/loginSteps/LoginComponent"
+import PhoneVerificationComponent from '@components/loginSteps/PhoneVerificationComponent';
+import Additional from '@components/loginSteps/Additional';
+import RegistrationSuccess   from '@components/loginSteps//RegistrationSuccess';
 import { useState } from "react";
 
-
-function ActiveStepFormComponent() {
-    const [step,setStep] = useState<number>(2);
-    const [phone,setPhone] = useState<string>("");
+function ActiveStepFormComponent(){
+	const [step,setStep] = useState<number>(1);
+	const [phone,setPhone] = useState<string>("");
     const [height,setHeight] = useState<number>(0);
     const [weight,setWeight] = useState<number>(0);
     const [kcal,setKcal] = useState<number>(0);
-    switch (step) {
-        case 1:
+	switch (step) {
+		case 1:
             return <LoginComponent onChange={setStep} setPhone={setPhone}/>;
         case 2:
             return <PhoneVerificationComponent phone={phone} onChange={setStep}/>;
@@ -29,15 +26,14 @@ function ActiveStepFormComponent() {
     }
 }
 
-
-const LoginPage = () =>{ 
+const LoginPage1 = () =>{ 
     //setStep
     return (
         <Layout>
-            <ActiveStepFormComponent  />
+       	 	<ActiveStepFormComponent />
             <Footer />
         </Layout>
     )
 }
 
-export default LoginPage
+export default LoginPage1

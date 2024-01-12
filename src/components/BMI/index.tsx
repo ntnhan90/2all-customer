@@ -27,8 +27,8 @@ const BMI = ({height, weight} : BMIType) => {
     }
 
     return (
-        <div className="ch-s-bmi-parent">
-            <div className="ch-s-bmi font-size24">Chỉ số BMI</div>
+        <div className="bmi-parent">
+            <div className="bmi text-xs-semibold-size font-weight-600">Chỉ số BMI</div>
                 <div className="data-parent">
                     <div className="data position-relative">
                     <div className="data-child"></div>

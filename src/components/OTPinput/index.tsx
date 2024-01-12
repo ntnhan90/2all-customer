@@ -35,11 +35,11 @@ const OTPInput = ({
         // placeholder="0"
         onChange={(e) => {
           const { value } = e.target;
-          console.log("onChange input", megaIndex, "; value : ", value);
+          //console.log("onChange input", megaIndex, "; value : ", value);
           onChange(megaIndex, value);
         }}
         onSelect={() => {
-          console.log("onclick/select input", megaIndex);
+          //console.log("onclick/select input", megaIndex);
           onSelect(megaIndex);
         }}
         value={value}

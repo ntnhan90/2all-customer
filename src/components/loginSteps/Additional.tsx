@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form"
 import { postData } from '@utils/services'; 
 import { server } from '@utils/server'; 
 import { useState } from "react";
@@ -13,15 +13,15 @@ type StepType = {
 interface LoginType {
     name?: string;
     email?: string;
-    ngaySinh?:any;
-    movement?: number;
+    birthday?:any;
     sex?: number;
-    chieuCao?: number;
-    canNang?: number;
-    allergy?: string,
-    diseases?:string;
-    gioiTinh?:number;
-    loaiLaoDong?:number;
+    height_m?: number;
+    weight_kg?: number;
+    physical_activity_level?:string,
+    current_diet?: string,
+    allergic_food?: string,
+    chronic_disease?: string,
+    expected_diet?: string
 }
 
 
@@ -37,25 +37,51 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
     }
 
 
-    const { register,handleSubmit } = useForm();
-    const onSubmit = async (data: LoginType) => {
-        let selectedDate = document.getElementById('birthDate') as HTMLInputElement;
-        data.ngaySinh = selectedDate.value;
-        data.gioiTinh = 1;
-        data.loaiLaoDong = 2;
+    //const { register,handleSubmit } = useForm();
+    const { register, formState:{errors}, handleSubmit } = useForm<IFormInput>()
 
-        setHeight(data.chieuCao);
-        setWeight(data.canNang);
-
-        const res = await postData(`${server}auth/setEnergy`, {
-            data: data,
+    const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+        console.log(data);
+        setHeight(data.height_m);
+        setWeight(data.weight_kg);
+        /*
+        await fetch(`${server}web-customer/create-customer-profile`, {
+            method: "post",
+            mode: "cors",
+            cache: "no-cache",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                name: "Anh Hoàng",
+                email: "hoanganh@gmail.com",
+                birthday: "2005-08-11",
+                sex: "M",
+                height_m: 175,
+                weight_kg: 70,
+                physical_activity_level: "moderate",
+                current_diet: "chỉ ăn thịt",
+                allergic_food: "sữa, trứng",
+                chronic_disease: "hen suyễn",
+                expected_diet: "bổ sung chất xơ"
+            }),
+        })
+        .then((res) => res.json())
+        .then((json) => {
+            console.log(json);
+        })
+        .catch((error) => {
+            console.log(error);
         });
-        
-        setKcal(res.result.result.nangLuongKhuyenNghi.giaTri_Min);
+        */
+        setKcal(12);
         setTimeout(() => {
             onChange(4);
-        }, 2000);
-    };
+        }, 3000);
+
+    }
 
     return (
         <div className="phone_verification">
@@ -78,9 +104,13 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                     </div>
                                     <div className="input7 ">
                                         <input placeholder="Ví dụ: nguyen.vana" type="text"
-                                            className="text-input1 border-none no-outline no-padding w-100" name="name"
+                                            className="text-input1 border-none no-outline no-padding w-100" 
+                                            {...register("name", { required: true})} 
                                         />
                                     </div>
+                                    {errors.name?.type === "required" && (
+                                        <p role="alert"> Name is required</p>
+                                    )}
                                 </div>
                                
                             </div>
@@ -93,11 +123,21 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                     </div>
                                     <div className="input7">
                                         <div className="content28">
-                                            <input placeholder="Ví dụ: nguyen.vana@email.com" type="text"
-                                                className="text-input1 border-none no-outline no-padding w-100" name="email"
+                                            <input placeholder="Ví dụ: nguyen.vana@email.com" 
+                                                type="email"
+                                                className="text-input1 border-none no-outline no-padding w-100" 
+                                                {...register("email", { 
+                                                    required: "email required",
+                                                    pattern: {
+                                                        value: /\S+@\S+\.\S+/,
+                                                        message: "Entered value does not match email format"
+                                                    }
+                                                })} 
                                             />
                                         </div>
                                     </div>
+                                    {errors.email && <span role="alert">{errors.email.message}</span>}
+                                    
                                 </div>
                               
                             </div>
@@ -112,10 +152,14 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                         <div className="content28">
                                             <div className="text80 font-size16">
                                                 <input placeholder="Ví dụ: 27/07/1995" type="date"
-                                                className="text-input1 border-none no-outline no-padding w-100" name="ngaySinh"
+                                                className="text-input1 border-none no-outline no-padding w-100" 
                                                 id="birthDate"
+                                                {...register("birthday", { required: true})} 
                                                 />
                                             </div>
+                                            {errors.birthday?.type === "required" && (
+                                                <p role="alert"> Birthday is required</p>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +173,11 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                 <div className="radio-check-parent">
                                     <div className="radio-check">
                                         <div className="input10">
-                                            <input type="radio" name="gioiTinh" className="checkbox-base1" value="1" />
+                                            <input type="radio" 
+                                            className="checkbox-base1"
+                                            value="M"
+                                            {...register("sex", { required: true})}
+                                             />
                                         </div>
                                         
                                         <div className="text-and-supporting-text3">
@@ -138,7 +186,11 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                     </div>
                                     <div className="radio-check">
                                         <div className="input10">
-                                            <input type="radio" name="gioiTinh" className="checkbox-base1" value="0" />
+                                            <input type="radio" 
+                                            className="checkbox-base1" 
+                                            value="F"
+                                            {...register("sex", { required: true})}
+                                            />
                                         </div>
                                         <div className="text-and-supporting-text3">
                                             <div className="text78">Nữ</div>
@@ -146,6 +198,9 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                     </div>
                                     
                                 </div>
+                                {errors.sex?.type === "required" && (
+                                    <p role="alert"> sex is required</p>
+                                )}
                             </div>
 
                             <div className="email-parent">
@@ -157,7 +212,8 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                         </div>
                                         <div className="input7">
                                             <input placeholder="Ví dụ: 163" type="text"
-                                                className="text-input1 border-none no-outline no-padding w-100 input7" name="chieuCao"
+                                                className="text-input1 border-none no-outline no-padding w-100 input7" 
+                                                {...register("height_m", { required: true})} 
                                             />
                                         </div>
                                     </div>
@@ -171,7 +227,8 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                         </div>
                                         <div className="input7">
                                             <input placeholder="Ví dụ: 60" type="text"
-                                                className="text-input1 border-none no-outline no-padding w-100 input7" name="canNang"
+                                                className="text-input1 border-none no-outline no-padding w-100 input7" 
+                                               {...register("weight_kg", { required: true})}
                                             />
                                         </div>
                                     </div>
@@ -186,28 +243,37 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                 
                                 <div className="donate-now button-group">
                                     <div className={
-                                            styling?.status && styling?.from == "child-1"
-                                              ? "button56 active"
-                                              : "button56"
+                                        styling?.status && styling?.from == "child-1"
+                                            ? "button56 active"
+                                            : "button56"
                                         } >
-                                        <input className="d-none" type="radio" id="a25" name="amount" />
+                                        <input className="d-none" type="radio" id="a25" 
+                                            {...register("physical_activity_level", { required: true})}
+                                            value="light"
+                                        />
                                         <label htmlFor="a25"  className="text83" onClick={() => handleClick(`child-1`)}>Nhẹ nhàng</label>
                                     </div>
 
                                     <div className={
-                                            styling?.status && styling?.from == "child-2"
-                                              ? "button56 active"
-                                              : "button56"
+                                        styling?.status && styling?.from == "child-2"
+                                            ? "button56 active"
+                                            : "button56"
                                         } >
-                                        <input  className="d-none" type="radio" id="a50" name="amount" />
+                                        <input  className="d-none" type="radio" id="a50" 
+                                            {...register("physical_activity_level", { required: true})}
+                                            value="moderate"
+                                        />
                                         <label htmlFor="a50" className="text83" onClick={() => handleClick(`child-2`)}>Trung Bình</label>
                                     </div>
                                     <div className={
-                                            styling?.status && styling?.from == "child-3"
-                                              ? "button56 active"
-                                              : "button56"
+                                         styling?.status && styling?.from == "child-3"
+                                            ? "button56 active"
+                                            : "button56"
                                         } >
-                                        <input  className="d-none" type="radio" id="a75" name="amount" />
+                                        <input  className="d-none" type="radio" id="a75" 
+                                             {...register("physical_activity_level", { required: true})}
+                                            value="vigorous"
+                                        />
                                         <label htmlFor="a75" className="text83" onClick={() => handleClick(`child-3`)}>Nặng</label>
                                     </div>
                                 </div>
@@ -220,7 +286,10 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                               ? "button56 no-padd active"
                                               : "button56 no-pad"
                                         } >
-                                        <input  className="d-none" type="radio" id="a01" name="CDA" />
+                                        <input  className="d-none" type="radio" id="a01" 
+                                            value="Hỗn hợp"
+                                            {...register("current_diet", { required: true})}
+                                        />
                                         <label htmlFor="a01" className="text83" onClick={() => handleClickCheDoAn(`child-4`)}>Hỗn hợp</label>
                                     </div>
                                     <div className={
@@ -228,7 +297,10 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                               ? "button56 no-pad active"
                                               : "button56 no-pad"
                                         } >
-                                        <input  className="d-none" type="radio" id="a02" name="CDA" />
+                                        <input  className="d-none" type="radio" id="a02" 
+                                            value="Thuần chay"
+                                            {...register("current_diet", { required: true})}
+                                        />
                                         <label htmlFor="a02" className="text83" onClick={() => handleClickCheDoAn(`child-5`)}>Thuần chay</label>
                                     </div>
                                     <div className={
@@ -236,7 +308,10 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                               ? "button56 no-pad active"
                                               : "button56 no-pad"
                                         } >
-                                        <input  className="d-none" type="radio" id="a03" name="CDA" />
+                                        <input  className="d-none" type="radio" id="a03" 
+                                            value="Chỉ ăn thịt "
+                                            {...register("current_diet", { required: true})}
+                                        />
                                         <label htmlFor="a03" className="text83" onClick={() => handleClickCheDoAn(`child-6`)}>Chỉ ăn thịt </label>
                                     </div>
                                     
@@ -247,7 +322,10 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                               ? "button56 no-pad active"
                                               : "button56 no-pad"
                                         } >
-                                        <input  className="d-none" type="radio" id="a04" name="CDA" />
+                                        <input  className="d-none" type="radio" id="a04"
+                                            value="Cá"
+                                            {...register("current_diet", { required: true})}
+                                        />
                                         <label htmlFor="a04" className="text83" onClick={() => handleClickCheDoAn(`child-7`)}>Cá </label>
                                     </div>
                                     <div className={
@@ -255,7 +333,10 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                               ? "button56 no-pad active"
                                               : "button56 no-pad"
                                         } >
-                                        <input  className="d-none" type="radio" id="a05" name="CDA" />
+                                        <input  className="d-none" type="radio" id="a05"
+                                            value="Chay"
+                                            {...register("current_diet", { required: true})}
+                                        />
                                         <label htmlFor="a05" className="text83" onClick={() => handleClickCheDoAn(`child-8`)}>Chay </label>
                                     </div>
                                     <div className={
@@ -263,7 +344,10 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                               ? "button56 w133 active"
                                               : "button56 w133"
                                         } >
-                                        <input  className="d-none" type="radio" id="a06" name="CDA" />
+                                        <input  className="d-none" type="radio" id="a06"
+                                            value="Không ăn kiêng"
+                                            {...register("current_diet", { required: true})}
+                                        />
                                         <label htmlFor="a06" className="text83" onClick={() => handleClickCheDoAn(`child-9`)}>Không ăn kiêng</label>
                                     </div>
                                 </div>
@@ -273,7 +357,7 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                     <div className="text73">Dị ứng với đồ ăn (nếu có)</div>
                                     <input placeholder="Ví dụ: sữa động vật, trứng..." type="text"
                                         className="text-input1 border-none no-outline no-padding w-100 input7"
-                                        name="allergy"
+                                        {...register("allergic_food" )}
                                     />
                                     
                                 </div>
@@ -289,7 +373,7 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                     <div className="input7">
                                         <input placeholder="Ví dụ: Cao huyết áp..." type="text"
                                         className="text-input1 border-none no-outline no-padding w-100 input7" 
-                                        name="diseases"
+                                        {...register("chronic_disease")}
                                         />
                                     </div>
                                 </div>
@@ -303,60 +387,66 @@ const Additional = ({onChange,setHeight,setWeight,setKcal}: StepType) => {
                                 <div className="radio-check-group">
                                     <div className="radio-check3">
                                         <div className="input10">
-                                            <input type="radio" name="che_do_an" className="checkbox-base1" value="0" />
+                                            <input type="radio" className="checkbox-base1" 
+                                            value="Thuần chay"
+                                            {...register("expected_diet", { required: true})}
+                                            />
                                         </div>
                                         <div className="text-and-supporting-text3">
                                             <div className="text78">Thuần chay</div>
-                                            <div className="supporting-text54">
-                                            Save my login details for next time.
-                                            </div>
                                         </div>
                                     </div>
                                     <div className="radio-check3">
                                         <div className="input10">
-                                            <input type="radio" name="che_do_an" className="checkbox-base1" value="1" />
+                                            <input type="radio" className="checkbox-base1" 
+                                            value="Eat clean"
+                                            {...register("expected_diet", { required: true})}
+                                            />
                                         </div>
                                         <div className="text-and-supporting-text3">
                                             <div className="text78">Eat clean</div>
-                                            <div className="supporting-text54">
-                                            Save my login details for next time.
-                                            </div>
                                         </div>
                                     </div>
                                     <div className="radio-check3">
                                         <div className="input10">
-                                            <input type="radio" name="che_do_an" className="checkbox-base1" value="2" />
+                                            <input type="radio" className="checkbox-base1" 
+                                            value="Tăng cơ"
+                                            {...register("expected_diet", { required: true})}
+                                            />
                                         </div>
                                         <div className="text-and-supporting-text3">
                                             <div className="text78">Tăng cơ</div>
-                                            <div className="supporting-text54">
-                                                Save my login details for next time.
-                                            </div>
+                                          
                                         </div>
                                     </div>
                                     <div className="radio-check3">
                                          <div className="input10">
-                                            <input type="radio" name="che_do_an" className="checkbox-base1" value="3" />
+                                            <input type="radio" className="checkbox-base1" 
+                                            value="Bổ sung chất xơ"
+                                            {...register("expected_diet", { required: true})}
+                                             />
                                         </div>
                                         <div className="text-and-supporting-text3">
                                             <div className="text78">Bổ sung chất xơ</div>
-                                            <div className="supporting-text54">
-                                                Save my login details for next time.
-                                            </div>
                                         </div>
                                     </div>
                                     <div className="radio-check3">
                                         <div className="input10">
-                                            <input type="radio" name="che_do_an" className="checkbox-base1" value="4" />
+                                            <input type="radio" className="checkbox-base1"
+                                            value="Chế độ ăn hỗn hợp"
+                                            {...register("expected_diet", { required: true})}
+                                             />
                                         </div>
                                         <div className="text-and-supporting-text3">
                                             <div className="text78">Chế độ ăn hỗn hợp</div>
-                                           
                                         </div>
                                     </div>
                                     <div className="radio-check3">
                                         <div className="input10">
-                                            <input type="radio" name="che_do_an" className="checkbox-base1" value="4" />
+                                            <input type="radio" className="checkbox-base1"
+                                            value="Khác"
+                                            {...register("expected_diet", { required: true})}
+                                             />
                                         </div>
                                         <div className="text-and-supporting-text3">
                                             <div className="text78">Khác </div>

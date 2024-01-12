@@ -2,6 +2,8 @@ import Head from "next/head";
 import Header from "@components/header"
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react';
 
 type LayoutType = {
   	title?: string;
@@ -10,6 +12,12 @@ type LayoutType = {
 
 
 export default ({ children, title = "2ALL" }: LayoutType) => {
+	const pathname = usePathname()
+    const [onTop, setOnTop] = useState(false);
+
+	if(pathname === "/landingpage") {
+	}
+
 	return (
 	    <div className="app-main">
 		    <Head>
@@ -33,8 +41,8 @@ export default ({ children, title = "2ALL" }: LayoutType) => {
 		          href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
 		        />
 		    </Head>
-
-	      	<main className="landing-page-option-3 d-flex flex-column">
+		    {/* landing-page-option-3 */}
+	      	<main className=" d-flex flex-column">
 	      		<Header />
 	        	{children}
 	      	</main>

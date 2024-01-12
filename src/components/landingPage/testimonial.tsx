@@ -4,12 +4,12 @@ import 'swiper/css';
 import { Navigation,Pagination } from 'swiper/modules';
 import React from 'react';
 
-const Test = () => {
+const Testimonial = () => {
     const pagination = {
         el: '.pagination',
         clickable: true,
         renderBullet: function ( index:any,className:any) {
-            return '<div class="pagination-dot-indicator ' + className + '">' + (index + 1) + '</div>'
+            return '<div className="pagination-dot-indicator ' + className + '">' + (index + 1) + '</div>'
         },
       };
     return(
@@ -265,4 +265,4 @@ const Test = () => {
 };
 
 
-export default Test;
+export default Testimonial;

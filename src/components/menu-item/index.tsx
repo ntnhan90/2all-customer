@@ -28,7 +28,7 @@ const MenuItem = ({ name,  price,
                 distance, ratings, kcal}: ProductTypeList) => {
     return(
         <div className="food-card d-flex flex-column " key={name}>
-            <div className="frame-parent d-flex flex-column">
+            <div className="frame-parent d-flex flex-column position-relative">
                 <div className="discount-wrapper">
                 {
                     price && 
@@ -51,28 +51,18 @@ const MenuItem = ({ name,  price,
                     <div className="general-info d-flex gap-2">
                         <div className="d-flex align-items-center gap-2px">
                             <img className="small-icon" alt=""  src="/images/markerpin02.svg" />
-
-                            <div className="kcal font-weight-600">{kcal} Kcal</div>
+                            <div className="kcal font-weight-600 yellowgreen-100">{kcal} Kcal</div>
                         </div>
                         <div className="d-flex align-items-center gap-1">
-                            <img className="small-icon"  alt=""
-                                src="/images/star-icon1.svg"
-                            />
-
+                            <img className="small-icon"  alt=""     src="/images/star-icon1.svg"   />
                             <div className="text">{ratings}</div>
                         </div>
                         <div className="d-flex align-items-center gap-2px">
-                            <img className="small-icon"alt=""
-                                src="/images/markerpin021.svg"
-                            />
-
+                            <img className="small-icon"alt="" src="/images/markerpin021.svg" />
                             <div className="text">{distance} km</div>
                         </div>
                         <div className="d-flex align-items-center gap-2px">
-                            <img className="small-icon"alt=""
-                                src="/images/timer.svg"
-                            />
-
+                            <img className="small-icon"alt=""  src="/images/timer.svg" />
                             <div className="text">{time} min</div>
                         </div>
                     </div>
